@@ -31,6 +31,7 @@ export const contextSignals = {
 
 // === PROGRÉS SETMANAL ===
 export const weeklyProgress = {
+  weekNumber: 20,
   sessionsCompleted: 3,
   sessionsPlanned: 5,
   daysActive:  ["Dl", "Dt", "Dc"],

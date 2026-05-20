@@ -96,7 +96,6 @@ function renderExerciseCard(ex, num) {
 function renderCompletedState() {
   return `
     <section class="empty-state" aria-labelledby="rutina-complete-title">
-      ${backLink("#/avui", "Tornar a Avui")}
       <i data-lucide="trophy" aria-hidden="true" style="color: var(--color-ia-500); width:72px; height:72px;"></i>
       <h1 id="rutina-complete-title">Rutina completada!</h1>
       <p style="color: var(--color-text-secondary); max-width: 360px;">
