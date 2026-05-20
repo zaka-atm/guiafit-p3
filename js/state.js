@@ -114,6 +114,9 @@ export function markExerciseDone(exerciseId) {
 /**
  * Substitueix un exercici per una alternativa de la IA.
  * Conserva l'estat de completat=false i marca isAlternative=true.
+ *
+ * NO crida notifySubscribers perquè el caller navega tot seguit
+ * (evitem un flash de re-render del sheet abans de la navegació).
  */
 export function replaceExercise(originalId, alternativeData) {
   const idx = state.today.workout.exercises.findIndex(ex => ex.id === originalId);
@@ -126,7 +129,6 @@ export function replaceExercise(originalId, alternativeData) {
     originalId: originalId,
     originalName: state.today.workout.exercises[idx].name,
   };
-  notifySubscribers();
 }
 
 /**
@@ -145,6 +147,8 @@ export function markMealDone(mealId) {
 /**
  * Substitueix un àpat per una recepta alternativa.
  * Manté l'id i el nom de l'àpat però canvia descripció i ingredients.
+ *
+ * NO crida notifySubscribers — el caller navega tot seguit.
  */
 export function replaceMeal(mealId, recipeData) {
   const meal = state.today.meals.find(m => m.id === mealId);
@@ -159,7 +163,6 @@ export function replaceMeal(mealId, recipeData) {
   meal.alternativeId = recipeData.id;
   meal.hasIngredientIssue = false;
   meal.missingIngredient = null;
-  notifySubscribers();
 }
 
 /**

@@ -25,8 +25,8 @@
   <link rel="stylesheet" href="css/views.css">
 </head>
 <body>
-  <!-- Skip link per a accessibilitat per teclat -->
-  <a href="#app" class="skip-link">Saltar al contingut principal</a>
+  <!-- Skip link per a accessibilitat per teclat (no canvia la ruta) -->
+  <a href="#main-content" class="skip-link">Saltar al contingut principal</a>
 
   <!-- Top navigation: generada per JS al bootstrap -->
   <header id="topnav" class="topnav" role="banner">
@@ -40,6 +40,8 @@
 
   <!-- Container principal: el router injecta aquí cada vista -->
   <main id="app" class="app-main" role="main" aria-live="polite" tabindex="-1">
+    <!-- Anchor invisible per al skip link (no és un hash de ruta) -->
+    <a id="main-content" tabindex="-1" aria-hidden="true" class="sr-only"></a>
     <!-- Generat dinàmicament pel router -->
   </main>
 

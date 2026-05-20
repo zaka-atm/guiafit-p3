@@ -9,7 +9,7 @@
  * hard-coded i deterministes (millor per al test d'usuari).
  */
 
-import { state } from "./state.js";
+import { state, notifySubscribers } from "./state.js";
 
 /* ============================================
    ALTERNATIVES PER A "MÀQUINA OCUPADA" (Tasca 1)
@@ -217,4 +217,6 @@ export function applyRecommendation() {
   state.today.workout.exercises.forEach(ex => {
     if (ex.restSeconds < 90) ex.restSeconds = 90;
   });
+  // Notifiquem perquè el Dashboard amagui la targeta de recomanació
+  notifySubscribers();
 }

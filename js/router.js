@@ -52,6 +52,13 @@ const routes = [
  */
 export function handleRouteChange() {
   const hash = window.location.hash || "#/avui";
+
+  // Ignorem hashes d'ancoratge intern (skip link, etc.) per no
+  // interferir amb la navegació accessible
+  if (hash && !hash.startsWith("#/")) {
+    return;
+  }
+
   state.ui.currentRoute = hash;
 
   // Tanquem qualsevol sheet/drawer obert quan canviem de ruta
