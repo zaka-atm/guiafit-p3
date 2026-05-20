@@ -15,6 +15,9 @@ import { subscribe, state } from "./state.js";
 import { onDashboardClick } from "./views/dashboard.js";
 import { onExerciciClick } from "./views/exercici.js";
 import { onAlternativesExerciciClick } from "./views/alternatives-exercici.js";
+import { onApatClick } from "./views/apat.js";
+import { onIngredientClick } from "./views/ingredient.js";
+import { onAlternativesReceptaClick } from "./views/alternatives-recepta.js";
 
 /**
  * Inicialitza l'app un cop el DOM està a punt.
@@ -59,6 +62,9 @@ function bootstrap() {
     onDashboardClick(e);
     onExerciciClick(e);
     onAlternativesExerciciClick(e);
+    onApatClick(e);
+    onIngredientClick(e);
+    onAlternativesReceptaClick(e);
   });
 
   // === SUBSCRIPCIÓ A CANVIS D'ESTAT ===
