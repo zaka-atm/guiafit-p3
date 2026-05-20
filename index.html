@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GuIAFit · Avui</title>
+  <meta name="description" content="GuIAFit — Entrenament i nutrició personalitzats amb IA simulada">
+  <meta name="theme-color" content="#0D9488">
+
+  <!-- Tailwind CSS via CDN (utility-first, sense build) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Lucide icons via CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Estils propis (ordre: tokens → base → components → views) -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+  <!-- Skip link per a accessibilitat per teclat -->
+  <a href="#app" class="skip-link">Saltar al contingut principal</a>
+
+  <!-- Top navigation: generada per JS al bootstrap -->
+  <header id="topnav" class="topnav" role="banner">
+    <!-- Contingut injectat per js/components.js -->
+  </header>
+
+  <!-- Drawer lateral mòbil (s'obre amb el botó hamburger) -->
+  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
+    <!-- Contingut injectat per js/components.js -->
+  </div>
+
+  <!-- Container principal: el router injecta aquí cada vista -->
+  <main id="app" class="app-main" role="main" aria-live="polite" tabindex="-1">
+    <!-- Generat dinàmicament pel router -->
+  </main>
+
+  <!-- Toast container: notificacions breus no intrusives -->
+  <div id="toast-container" class="toast-container" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Sheet container: bottom sheets (mòbil) i side panels (desktop) -->
+  <div id="sheet-container" class="sheet-container"></div>
+
+  <!-- Bootstrap de l'app: importa tot i inicialitza -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,780 @@
+/* ============================================
+   GuIAFit — components.css
+   Estils per a tots els components reutilitzables.
+   Cada component s'ha pensat per ser accessible (teclat,
+   contrast, focus visible) i mobile-first.
+   ============================================ */
+
+/* ============================================
+   BOTONS
+   ============================================ */
+
+/* Botó primari — acció principal de cada vista */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--touch-min);
+  padding: var(--space-3) var(--space-6);
+  background-color: var(--color-primary-600);
+  color: var(--color-text-inverse);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background-color: var(--color-primary-700);
+}
+.btn-primary:active {
+  background-color: var(--color-primary-800);
+  transform: translateY(1px);
+}
+.btn-primary:disabled,
+.btn-primary[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Botó secundari — acció secundària, mateix pes visual menor */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--touch-min);
+  padding: var(--space-3) var(--space-6);
+  background-color: transparent;
+  color: var(--color-primary-600);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  border: 1.5px solid var(--color-primary-600);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  background-color: var(--color-primary-50);
+}
+.btn-secondary:active {
+  background-color: var(--color-primary-100);
+}
+
+/* Botó terciari — text simple, sense fons ni border */
+.btn-tertiary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--touch-min);
+  padding: var(--space-2) var(--space-3);
+  background: none;
+  border: none;
+  color: var(--color-primary-700);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+}
+.btn-tertiary:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* Botó IA contextual — outline amb icona d'alerta */
+.btn-ia {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--touch-min);
+  padding: var(--space-3) var(--space-5);
+  background-color: var(--color-ia-50);
+  color: var(--color-text-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  border: 1.5px solid var(--color-ia-400);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+.btn-ia:hover {
+  background-color: var(--color-ia-100);
+}
+.btn-ia .lucide {
+  color: var(--color-ia-600);
+}
+
+/* Botó-icona quadrat (per a tancar sheets, etc.) */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+.btn-icon:hover {
+  background-color: var(--color-surface-alt);
+}
+
+/* ============================================
+   BADGES
+   ============================================ */
+
+/* Badge IA — etiqueta destacada per indicar contingut generat per IA */
+.badge-ia {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--color-ia-500);
+  color: var(--color-text-primary); /* Negre sobre groc per contrast WCAG */
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: var(--radius-full);
+}
+
+/* Badge estat — Fet / Pendent */
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius-full);
+}
+.badge-done {
+  background-color: var(--color-success-bg);
+  color: #14532D; /* Green-900 per contrast extra */
+}
+.badge-pending {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text-secondary);
+}
+.badge-missing {
+  background-color: var(--color-error-bg);
+  color: #7F1D1D; /* Red-900 per contrast */
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+/* Card base */
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.card-interactive {
+  cursor: pointer;
+}
+.card-interactive:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* Card d'exercici / àpat */
+.card-exercise {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  .card-exercise {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* Card IA — variants destacats amb fons subtilment groguenc */
+.card-ia {
+  position: relative;
+  background-color: var(--color-ia-50);
+  border: 1.5px solid var(--color-ia-300);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  padding-top: var(--space-8); /* Espai per al badge IA absolut */
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-fast);
+}
+.card-ia:hover {
+  box-shadow: var(--shadow-md);
+}
+.card-ia .badge-ia {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+}
+
+/* Card de Dashboard — gran, amb etiqueta superior */
+.card-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+.card-dashboard h2 {
+  font-size: var(--text-2xl);
+}
+
+/* ============================================
+   PROGRESS BAR — feedback visual de progrés
+   ============================================ */
+.progress {
+  width: 100%;
+  height: 8px;
+  background-color: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--color-primary-600);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+}
+
+/* ============================================
+   TOAST — notificacions breus
+   ============================================ */
+.toast-container {
+  position: fixed;
+  bottom: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: center;
+  pointer-events: none; /* el container no bloqueja clics; els toasts sí */
+  width: max-content;
+  max-width: calc(100vw - var(--space-8));
+}
+
+.toast {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  pointer-events: auto;
+  animation: toast-in var(--transition-base) forwards;
+}
+.toast.toast-leaving {
+  animation: toast-out var(--transition-base) forwards;
+}
+.toast .lucide {
+  color: var(--color-primary-300);
+  flex-shrink: 0;
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes toast-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(20px); }
+}
+
+/* ============================================
+   TOP NAVIGATION
+   ============================================ */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+@media (min-width: 768px) {
+  .topnav {
+    padding: var(--space-4) var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .topnav {
+    padding: var(--space-4) var(--space-10);
+  }
+}
+
+.topnav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--font-bold);
+  font-size: var(--text-lg);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+.topnav-logo:hover { text-decoration: none; }
+
+/* Logo placeholder rombe (definitiu via P2) */
+.logo-mark {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--color-primary-600);
+  transform: rotate(45deg);
+  border-radius: var(--radius-sm);
+  position: relative;
+}
+.logo-mark::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  background-color: var(--color-primary-600);
+  border-radius: 1px;
+}
+
+/* Nav desktop horitzontal */
+.topnav-links {
+  display: none;
+  list-style: none;
+  gap: var(--space-2);
+}
+
+.topnav-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text-primary);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+}
+.topnav-links a:hover {
+  background-color: var(--color-surface-alt);
+  text-decoration: none;
+}
+.topnav-links a.is-active {
+  color: var(--color-primary-700);
+  background-color: var(--color-primary-50);
+}
+
+@media (min-width: 768px) {
+  .topnav-links {
+    display: flex;
+  }
+}
+
+/* Botó hamburger — només mòbil */
+.btn-hamburger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+}
+.btn-hamburger:hover {
+  background-color: var(--color-surface-alt);
+}
+
+@media (min-width: 768px) {
+  .btn-hamburger {
+    display: none;
+  }
+}
+
+/* Avatar perfil — placeholder rodó */
+.topnav-profile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-700);
+  font-weight: var(--font-semibold);
+  border-radius: var(--radius-full);
+}
+
+/* ============================================
+   MOBILE DRAWER — lateral, només mòbil
+   ============================================ */
+.mobile-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+.mobile-drawer.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-drawer-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 80%;
+  max-width: 320px;
+  background-color: var(--color-surface);
+  padding: var(--space-6);
+  transform: translateX(-100%);
+  transition: transform var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.mobile-drawer.is-open .mobile-drawer-panel {
+  transform: translateX(0);
+}
+
+.mobile-drawer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.mobile-drawer a {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-text-primary);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-md);
+}
+.mobile-drawer a:hover {
+  background-color: var(--color-surface-alt);
+  text-decoration: none;
+}
+.mobile-drawer a.is-active {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-700);
+}
+
+/* ============================================
+   SHEET — bottom sheet (mòbil) / side panel (desktop)
+   ============================================ */
+.sheet-container { /* contenidor sense estil; els sheets es popule dins */ }
+
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fade-in var(--transition-base) forwards;
+}
+
+.sheet {
+  position: fixed;
+  z-index: calc(var(--z-modal) + 1);
+  background-color: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-xl);
+  /* Mòbil: bottom sheet */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 85vh;
+  border-top-left-radius: var(--radius-2xl);
+  border-top-right-radius: var(--radius-2xl);
+  animation: sheet-up var(--transition-base) ease-out forwards;
+}
+
+/* Drag handle visible només en mòbil */
+.sheet-handle {
+  width: 40px;
+  height: 4px;
+  margin: var(--space-3) auto var(--space-2);
+  background-color: var(--color-border-strong);
+  border-radius: var(--radius-full);
+}
+
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-5) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sheet-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  margin: 0;
+}
+
+.sheet-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .sheet {
+    /* Desktop: side panel a la dreta, alçada completa */
+    top: 0;
+    bottom: 0;
+    left: auto;
+    right: 0;
+    width: 480px;
+    max-height: 100vh;
+    border-radius: 0;
+    animation: sheet-right var(--transition-base) ease-out forwards;
+  }
+  .sheet-handle {
+    display: none;
+  }
+  .sheet-header {
+    padding: var(--space-5);
+  }
+}
+
+@keyframes sheet-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+@keyframes sheet-right {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ============================================
+   SKELETON SCREENS — patró nº 1
+   Comuniquen que el contingut està a punt d'arribar.
+   ============================================ */
+.skeleton {
+  background: linear-gradient(90deg,
+    var(--color-surface-alt) 0%,
+    var(--color-border) 50%,
+    var(--color-surface-alt) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: var(--radius-md);
+}
+
+.skeleton-text {
+  height: 16px;
+  margin-bottom: var(--space-2);
+}
+
+.skeleton-title {
+  height: 24px;
+  width: 60%;
+  margin-bottom: var(--space-3);
+}
+
+.skeleton-card {
+  height: 120px;
+  margin-bottom: var(--space-3);
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ============================================
+   VIDEO PLACEHOLDER — caixa gris amb play icon
+   ============================================ */
+.video-placeholder {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.video-placeholder .lucide {
+  width: 48px;
+  height: 48px;
+  color: var(--color-text-secondary);
+}
+.video-placeholder-label {
+  position: absolute;
+  bottom: var(--space-2);
+  left: var(--space-2);
+  background-color: rgba(28, 25, 23, 0.85);
+  color: var(--color-text-inverse);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   CAIXA "3 CLAUS DE TÈCNICA" — patró nº 7
+   ============================================ */
+.tech-keys {
+  border: 1.5px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  background-color: var(--color-surface);
+}
+.tech-keys-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-3);
+}
+.tech-keys ol {
+  margin: 0;
+  padding-left: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.tech-keys li {
+  line-height: var(--leading-relaxed);
+}
+
+/* ============================================
+   CHIPS — etiquetes informatives compactes
+   ============================================ */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  background-color: var(--color-surface-alt);
+  color: var(--color-text-primary);
+  font-size: var(--text-sm);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* ============================================
+   EMPTY STATE — patró nº 6
+   ============================================ */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-12) var(--space-4);
+  text-align: center;
+}
+.empty-state .lucide {
+  width: 64px;
+  height: 64px;
+  color: var(--color-primary-500);
+}
+
+/* ============================================
+   STICKY CTA — patró nº 5 (mòbil)
+   Botó principal sempre a l'abast del polze
+   ============================================ */
+.sticky-cta {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-4);
+  background: linear-gradient(to top, var(--color-bg) 70%, rgba(250, 250, 249, 0));
+  margin: 0 calc(var(--space-4) * -1);
+}
+.sticky-cta .btn-primary {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .sticky-cta {
+    position: static;
+    padding: var(--space-4) 0 0;
+    background: none;
+    margin: 0;
+  }
+  .sticky-cta .btn-primary {
+    width: auto;
+  }
+}
+
+/* ============================================
+   IA REASONING BOX — capçalera contextual del panell IA
+   ============================================ */
+.ia-reasoning {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background-color: var(--color-ia-50);
+  border-left: 4px solid var(--color-ia-500);
+  border-radius: var(--radius-md);
+}
+.ia-reasoning-main {
+  font-weight: var(--font-medium);
+  color: var(--color-text-primary);
+}
+.ia-reasoning-context {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
