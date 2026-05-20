@@ -71,6 +71,7 @@ export function renderExercici(exerciseId) {
       ${videoPlaceholder(`VÍDEO TÈCNICA · ${escape(ex.name.toUpperCase())}`)}
 
       <!-- [Patró-7] Inline contextual help: 3 claus de tècnica -->
+      <!-- [Nielsen-7] Ajuda i documentació: claus de tècnica accessibles entre sèries -->
       <div class="tech-keys" aria-labelledby="tech-keys-label-${escape(ex.id)}">
         <span class="tech-keys-label" id="tech-keys-label-${escape(ex.id)}">3 CLAUS DE TÈCNICA</span>
         <ol>
@@ -95,6 +96,7 @@ export function renderExercici(exerciseId) {
       </div>
 
       <!-- CTA primari (sticky en mòbil) -->
+      <!-- [Nielsen-6] Disseny minimalista: una sola acció primària per pantalla -->
       <div class="sticky-cta">
         ${ex.completed ? `
           <button class="btn-secondary" disabled aria-disabled="true">

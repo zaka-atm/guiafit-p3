@@ -80,6 +80,7 @@ export function renderApat(mealId) {
       ` : ""}
 
       <!-- CTA primari sticky -->
+      <!-- [Nielsen-6] Disseny minimalista: una sola acció primària per pantalla -->
       <div class="sticky-cta">
         ${meal.completed ? `
           <button class="btn-secondary" disabled aria-disabled="true">
