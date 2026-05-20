@@ -19,6 +19,31 @@ El prototip implementa **2 tasques principals**:
 
 La proposta de valor és la **fricció cognitiva propera a zero** gràcies a una IA simulada al front-end que connecta de manera contextual les decisions d'entrenament i d'alimentació.
 
+## 🧭 Com explorar el prototip
+
+L'app obre per defecte al **Dashboard "Avui"** (`#/avui`). Des d'allà pots seguir les dues tasques principals end-to-end:
+
+### Tasca 1 — Substituir un exercici (gimnàs saturat)
+
+1. Dashboard → clic a **"Començar"** a la targeta de Rutina.
+2. Llista de 6 exercicis d'esquena → clic al primer (**Pull-down a la politja alta**).
+3. Detall de l'exercici → clic a **"Màquina ocupada?"**.
+4. S'obre un sheet (bottom sheet en mòbil / side panel en desktop) amb skeleton durant 1.2 s i després 3 alternatives IA.
+5. Clic **"Triar"** a qualsevol opció (per exemple, *Remo amb manuella*).
+6. Detall de l'alternativa → clic a **"Marcar com a fet"**.
+7. Vista d'èxit amb el següent exercici suggerit.
+
+### Tasca 2 — Decidir el sopar (ingredient faltant)
+
+1. Dashboard → **"Veure detall"** a la targeta de Menú.
+2. Llista d'àpats (esmorzar/dinar fets, sopar pendent amb badge "Falta ingredient").
+3. Clic al **Sopar** → veuràs els ingredients amb el pollastre marcat com a "Falta".
+4. Clic a **"Em falta un ingredient"** → selector d'ingredients dins d'un sheet.
+5. Clic a **Pollastre** → 3 receptes alternatives proposades per la IA. La capçalera menciona explícitament *"Avui has entrenat esquena"*: aquesta és la connexió entre dominis (proposta de valor de GuIAFit).
+6. Clic **"Triar"** en una recepta (per exemple, *Bol d'arròs amb tonyina*).
+7. Detall de la recepta amb porcions visuals (1 bol, 2 llaunes…) sense grams ni calories.
+8. Clic a **"Marcar com a fet"**.
+
 ## 🚀 Executar localment
 
 No cal cap procés de build. Només necessites un servidor estàtic:
@@ -85,13 +110,31 @@ guiafit-p3/
 
 ## 🎨 Patrons de disseny implementats
 
-1. **Skeleton Screens** — durant els 1200ms de "thinking" de la IA.
-2. **Optimistic UI** — l'estat canvia immediatament al marcar com a fet.
-3. **Toast Notifications** — feedback breu després d'una acció.
-4. **Bottom Sheet / Side Panel** — alternatives IA dins el flux.
-5. **Sticky CTA** — botó principal sempre a l'abast del polze (mòbil).
-6. **Empty States** — pantalla "rutina completada" amb missatge positiu.
-7. **Inline Contextual Help** — les "3 claus de tècnica" sota cada vídeo.
+Cada patró es marca al codi amb un comentari `// [Patró-N]` on s'aplica:
+
+| # | Patró | On s'aplica |
+|---|---|---|
+| 1 | **Skeleton Screens** | Durant els 1200 ms de "thinking" de la IA, a `alternatives-exercici.js` i `alternatives-recepta.js`. |
+| 2 | **Optimistic UI** | `markExerciseDone`, `markMealDone`, `applyRecommendation` — l'estat canvia abans de qualsevol confirmació simulada. |
+| 3 | **Toast Notifications** | `showToast` a `utils.js`. Confirmacions de 3 s després de marcar fet o aplicar recomanació. |
+| 4 | **Bottom Sheet / Side Panel** | `openSheet` a `components.js`. Bottom sheet en mòbil, side panel a desktop ≥ 768 px. |
+| 5 | **Sticky CTA** | Botons primaris d'acció amb `.sticky-cta` — sempre al abast del polze en mòbil. |
+| 6 | **Empty States** | "Rutina completada" (trofeu) i "Avui ja està!" (estrella) quan no queda res a fer. |
+| 7 | **Inline Contextual Help** | "3 claus de tècnica" dins de la caixa `.tech-keys` a la vista de detall d'exercici. |
+
+## 🔍 Heurístiques de Nielsen aplicades
+
+Cada heurística es marca al codi amb `// [Nielsen-N]`:
+
+| # | Heurística | Aplicació |
+|---|---|---|
+| 1 | Visibilitat de l'estat | Barres de progrés (1/6, 2/6…), skeleton screens, toast de confirmació, `aria-live`. |
+| 2 | Coincidència món real | "Màquina ocupada?", "Em falta un ingredient"; porcions visuals (1 bol, 2 ous) en lloc de grams. |
+| 3 | Control i llibertat | Botó "← Tornar" sempre disponible; Esc tanca sheets i drawer; backdrop click tanca. |
+| 4 | Consistència | Mateix patró Wizard per a les 2 tasques; mateixos botons primaris teal. |
+| 5 | Reconèixer ≠ recordar | Dashboard mostra els 6 exercicis i 3 àpats d'un cop d'ull. |
+| 6 | Disseny minimalista | Una sola acció primària per pantalla en mode Wizard. |
+| 7 | Ajuda i documentació | "3 claus de tècnica" sota el vídeo de cada exercici. |
 
 ## 📜 Llicència
 
