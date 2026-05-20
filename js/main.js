@@ -12,6 +12,7 @@
 import { initRouter, handleRouteChange } from "./router.js";
 import { renderTopNav, openMobileDrawer, closeMobileDrawer } from "./components.js";
 import { subscribe, state } from "./state.js";
+import { onDashboardClick } from "./views/dashboard.js";
 
 /**
  * Inicialitza l'app un cop el DOM està a punt.
@@ -51,6 +52,9 @@ function bootstrap() {
       setTimeout(closeMobileDrawer, 0);
       return;
     }
+
+    // Handlers per vista (event delegation)
+    onDashboardClick(e);
   });
 
   // === SUBSCRIPCIÓ A CANVIS D'ESTAT ===
