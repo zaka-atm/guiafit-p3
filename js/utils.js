@@ -37,7 +37,7 @@ export function html(strings, ...values) {
 /**
  * Escapa text per inserir-lo de manera segura a HTML.
  * Bàsic, no per a contextos d'atribut amb cometes simples; en aquest
- * prototip totes les dades són hard-coded i controlades.
+ * prototip totes les dades són conegudes i controlades.
  */
 export function escape(text) {
   if (text == null) return "";

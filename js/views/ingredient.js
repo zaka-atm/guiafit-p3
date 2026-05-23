@@ -74,9 +74,9 @@ export function onIngredientClick(e) {
   e.preventDefault();
 
   const name = opt.dataset.ingredientName;
-  // En aquest prototip només tenim alternatives quan falta el pollastre
-  // (insight 4 i guió narratiu de P2). Si es selecciona un altre, igualment
-  // anem a la vista d'alternatives — la mock IA podria afegir-ne en el futur.
+  // El guió narratiu de P2 cobreix el cas del pollastre faltant. Per als
+  // altres ingredients, la navegació és la mateixa: anem a la vista
+  // d'alternatives, que mostra el conjunt de receptes definides.
   console.info(`Ingredient que falta seleccionat: ${name}`);
   window.location.hash = `#/menjar/alternatives/${currentMealId}`;
 }

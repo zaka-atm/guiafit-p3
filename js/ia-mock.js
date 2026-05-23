@@ -1,12 +1,13 @@
 /**
- * ia-mock.js — Mock de la IA per al prototip GuIAFit.
+ * ia-mock.js — Respostes simulades de l'assistent virtual.
  *
- * Simula respostes "intel·ligents" basant-se en el context global.
- * Cada crida té un delay de 1200ms per simular el processament,
- * cosa que permet mostrar skeleton screens (Patró nº 1).
+ * Genera respostes contextuals basant-se en l'estat global del dia
+ * (rutina, àpats, senyals de son i d'entrenament). Cada crida té un
+ * delay de 1200 ms per simular el processament, cosa que permet
+ * mostrar skeleton screens (Patró nº 1).
  *
- * IMPORTANT: cap connexió a API real. Totes les respostes són
- * hard-coded i deterministes (millor per al test d'usuari).
+ * Cap connexió a API real. Totes les respostes són deterministes
+ * i predefinides per garantir reproducibilitat al test d'usuari.
  */
 
 import { state, notifySubscribers } from "./state.js";

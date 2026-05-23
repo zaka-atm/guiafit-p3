@@ -1,9 +1,9 @@
 /**
- * data.js — Dades mock per al prototip GuIAFit P3.
+ * data.js — Dades del prototip GuIAFit P3.
  *
- * Tot el contingut és estàtic i hard-coded segons el guió de P2.
- * NO connectar a cap API real: és un prototip de fidelitat alta
- * per a un test d'usuari, no una aplicació de producció.
+ * Tot el contingut és estàtic i segueix el guió narratiu definit a P2.
+ * Cap connexió a API real: és un prototip de fidelitat alta pensat
+ * per al test d'usuari, no per a producció.
  */
 
 // === USUARI ===
@@ -23,7 +23,7 @@ export const todayContext = {
 };
 
 // === SENYALS CONTEXTUALS ===
-// Influeixen en les recomanacions de la IA mockada.
+// Influeixen en les recomanacions de l'assistent virtual.
 export const contextSignals = {
   sleepHours: 6,                          // < 7 → recomanació "allargar descans"
   previousWorkoutMuscleGroup: "esquena",  // afecta la priorització proteica del sopar

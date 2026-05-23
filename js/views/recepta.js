@@ -44,7 +44,7 @@ export function renderRecepta(recipeId) {
         </span>
         <h1 id="recepta-title" style="margin-top: var(--space-2);">${escape(recipe.name)}</h1>
         <p style="font-family: var(--font-mono); color: var(--color-text-secondary); margin-top: var(--space-1);">
-          ⏱ ${recipe.prepTimeMinutes} min · 🥩 ${recipe.proteinGrams} g proteïna
+          ${recipe.prepTimeMinutes} min · ${recipe.proteinGrams} g proteïna
         </p>
       </header>
 
