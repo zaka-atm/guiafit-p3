@@ -94,11 +94,13 @@ guiafit-p3/
 
 ## Crèdits del grup
 
-| Membre | Rol a P3 |
+Hem treballat de manera col·laborativa en totes les fases de la pràctica. La taula següent indica el repartiment principal del lideratge de cada bloc, però totes les decisions de disseny i de redacció s'han pres conjuntament.
+
+| Membre | Lideratge principal |
 |---|---|
-| Zakaria Ait Moha | Desenvolupament front-end |
-| Anass Baki | Redacció memòria i guia d'estil |
-| Danyal Anwar Akhtar | Planificació i execució del test d'usuari |
+| Zakaria Ait Moha | Arquitectura del prototip i implementació front-end |
+| Anass Baki | Sistema de disseny, accessibilitat i redacció de la memòria |
+| Danyal Anwar Akhtar | Planificació del test, instruments i anàlisi de resultats |
 
 ## Notes tècniques
 
